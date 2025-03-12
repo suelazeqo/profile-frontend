@@ -1,0 +1,21 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #1e1c27;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+* {
+  color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav ul li a:hover {
+  color: #00c4cc;
+}
