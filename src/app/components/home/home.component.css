@@ -4,15 +4,15 @@
 }
 
 .sidebar {
-  width: 50%;
+  width: 40%;
   position: fixed;
   height: 100vh;
   padding: 20px;
 }
 
 .content {
-  width: 50%;
-  margin-left: 50%;
+  width: 60%;
+  margin-left: 40%;
   overflow-y: auto;
   height: 100vh;
   scroll-behavior: smooth;
