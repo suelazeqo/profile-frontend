@@ -1,5 +1,9 @@
 :root {
-  --background-color: #1b202d;
+  --background-color: #14202e;
   --primary-color: #d1d1d1;
   --secondary-color: #00c4cc;
+  --skills-bg: linear-gradient(145deg, #181c28, #1f2432);
+  --skills-shadow: rgba(0, 196, 204, 0.2);
+  --white: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.25)
 }

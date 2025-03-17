@@ -1,6 +1,6 @@
-import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Injectable, inject} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 import {Experience} from '../components/experience/experience.model';
 import {API_URL} from '../app.config';
 
@@ -13,6 +13,6 @@ export class ExperienceService {
   private http = inject(HttpClient);
 
   getExperience(): Observable<Experience[]> {
-    return this.http.get<Experience[]>(this.apiUrl);
+    return this.http.get<Experience[]>(`${this.apiUrl}/experience`);
   }
 }

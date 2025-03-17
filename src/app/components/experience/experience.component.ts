@@ -1,5 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component, OnInit, inject} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {ExperienceService} from '../../services/experience.service';
 import {Experience} from './experience.model';
 

@@ -1,1 +1,19 @@
-<p>skills works!</p>
+<div class="container">
+  <h2 class="section-header">Skills</h2>
+
+  <div class="card" *ngFor="let skill of skills">
+    <div class="card-left">
+      <p class="left-text">{{ skill.name }}</p>
+    </div>
+    <div class="card-right">
+      <div *ngFor="let subcategory of skill.subcategories">
+        <h3 class="title">{{ subcategory.name }}:</h3>
+        <ul>
+          <li class="skill" *ngFor="let tech of subcategory.skills">
+            {{ tech.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
