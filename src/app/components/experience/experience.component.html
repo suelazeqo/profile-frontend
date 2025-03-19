@@ -1,7 +1,9 @@
 <div class="container">
   <div class="show-flex" >
     <h2 class="section-header">Career History</h2>
-    <button  class="skill" (click)="openModal()">+</button>
+    <button class="btn add-btn" (click)="openModal()">
+      <i class="fas fa-plus"></i>
+    </button>
   </div>
   <div class="card-body" *ngFor="let exp of experiences">
     <div class="card-left">
@@ -10,7 +12,13 @@
       </p>
     </div>
     <div class="card-right">
-      <h3 class="title">{{ exp.title }}</h3>
+      <div class="show-flex">
+        <h3 class="title">{{ exp.title }}</h3>
+        <div style="display: flex">
+          <button class="btn edit-btn" (click)="editExperience(exp.id)"><i class="fas fa-edit"></i></button>
+          <button class="btn delete-btn" (click)="deleteExperience(exp.id)"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>
       <ul>
         <li *ngFor="let task of exp.responsibilities">{{ task }}</li>
       </ul>

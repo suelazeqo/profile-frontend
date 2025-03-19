@@ -21,4 +21,12 @@ export class ExperienceService {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     })
   }
+
+  deleteExperience(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/experience/${id}`);
+  }
+
+  updateExperience(id: number, experienceData: Experience) {
+    return this.http.put<Experience>(`${this.apiUrl}/experience/${id}`, experienceData);
+  }
 }

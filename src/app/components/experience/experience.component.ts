@@ -21,6 +21,10 @@ export class ExperienceComponent implements OnInit {
   private dialog = inject(MatDialog);
 
   ngOnInit() {
+    this.loadExperiences()
+  }
+
+  loadExperiences() {
     this.experienceService.getExperience().subscribe(data => {
       this.experiences = data;
     });
@@ -29,12 +33,43 @@ export class ExperienceComponent implements OnInit {
   openModal() {
     const dialogRef = this.dialog.open(ExperienceModalComponent, {
       width: '500px',
+      panelClass: 'no-scroll-modal',
       data: {title: '', startDate: null, endDate: null, responsibilities: [], skills: []}
     });
 
     dialogRef.afterClosed().subscribe((newExperience: Experience) => {
       if (newExperience) {
         this.experiences.push(newExperience);
+      }
+    });
+  }
+
+  deleteExperience(id: number) {
+    this.experienceService.deleteExperience(id).subscribe({
+      next: () => {
+        this.loadExperiences();
+      },
+      error: (error) => {
+        console.error('Error deleting experience:', error);
+      }
+    });
+  }
+  editExperience(id: number) {
+    const experienceToEdit = this.experiences.find(exp => exp.id === id);
+    if (!experienceToEdit) return;
+
+    const dialogRef = this.dialog.open(ExperienceModalComponent, {
+      width: '500px',
+      panelClass: 'no-scroll-modal',
+      data: experienceToEdit // Pass existing experience data
+    });
+
+    dialogRef.afterClosed().subscribe((updatedExperience: Experience) => {
+      if (updatedExperience) {
+        // Replace the updated experience in the list
+        this.experiences = this.experiences.map(exp =>
+          exp.id === updatedExperience.id ? updatedExperience : exp
+        );
       }
     });
   }

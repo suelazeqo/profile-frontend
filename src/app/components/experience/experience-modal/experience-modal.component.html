@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Add Experience</h2>
+<h2 mat-dialog-title>{{ data?.id ? 'Edit Experience' : 'Add Experience' }}</h2>
 <div mat-dialog-content>
   <form [formGroup]="experienceForm">
     <mat-form-field appearance="outline" class="full-width">

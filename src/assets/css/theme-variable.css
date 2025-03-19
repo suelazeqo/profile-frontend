@@ -5,5 +5,9 @@
   --skills-bg: linear-gradient(145deg, #181c28, #1f2432);
   --skills-shadow: rgba(0, 196, 204, 0.2);
   --white: #ffffff;
-  --shadow: rgba(0, 0, 0, 0.25)
+  --shadow: rgba(0, 0, 0, 0.25);
+  --danger-color: #d32f2f;
+  --danger-hover-bg: #b71c1c;
+  --hover-shadow-secondary: rgba(0, 196, 204, 0.5);
+  --hover-shadow-danger: rgba(211, 47, 47, 0.5);
 }

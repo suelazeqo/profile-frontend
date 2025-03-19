@@ -30,7 +30,7 @@ export class ExperienceModalComponent {
   private fb = inject(FormBuilder);
   private experienceService = inject(ExperienceService);
   private dialogRef = inject(MatDialogRef<ExperienceModalComponent>);
-  private data = inject<Experience>(MAT_DIALOG_DATA);
+  public data = inject<Experience>(MAT_DIALOG_DATA);
 
   experienceForm: FormGroup = this.fb.group({
     title: [this.data?.title || ''],
@@ -57,16 +57,28 @@ export class ExperienceModalComponent {
         .map((skill: string) => skill.trim())
         .filter((skill: string) => skill) || [];
 
-      this.experienceService.createExperience(formValues).subscribe({
-        next: (newExperience) => {
-          this.dialogRef.close(newExperience);
-        },
-        error: (error) => {
-          console.error('Error creating experience', error);
-        }
-      })
+      if (this.data?.id) {
+        this.experienceService.updateExperience(this.data.id, formValues).subscribe({
+          next: (updatedExperience) => {
+            this.dialogRef.close(updatedExperience);
+          },
+          error: (error) => {
+            console.error('Error updating experience', error);
+          }
+        });
+      } else {
+        this.experienceService.createExperience(formValues).subscribe({
+          next: (newExperience) => {
+            this.dialogRef.close(newExperience);
+          },
+          error: (error) => {
+            console.error('Error creating experience', error);
+          }
+        });
+      }
     }
   }
+
 
   close() {
     this.dialogRef.close();
