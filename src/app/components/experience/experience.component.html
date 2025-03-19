@@ -1,6 +1,9 @@
 <div class="container">
-  <h2 class="section-header">Career History</h2>
-  <div class="card" *ngFor="let exp of experiences">
+  <div class="show-flex" >
+    <h2 class="section-header">Career History</h2>
+    <button  class="skill" (click)="openModal()">+</button>
+  </div>
+  <div class="card-body" *ngFor="let exp of experiences">
     <div class="card-left">
       <p class="left-text">{{ exp.startDate | date:'MMM yyyy' }} -
         {{ exp.endDate ? (exp.endDate | date:'MMM yyyy') : 'Present' }}

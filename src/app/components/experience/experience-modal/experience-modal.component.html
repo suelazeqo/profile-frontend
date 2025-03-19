@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>Add Experience</h2>
+<div mat-dialog-content>
+  <form [formGroup]="experienceForm">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Start Date</mat-label>
+      <input matInput [matDatepicker]="startPicker" formControlName="startDate"/>
+      <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+      <mat-datepicker #startPicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>End Date</mat-label>
+      <input matInput [matDatepicker]="endPicker" formControlName="endDate"/>
+      <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-label>Responsibilities</mat-label>
+    <div formArrayName="responsibilities">
+      <div *ngFor="let responsibility of responsibilities.controls; let i = index">
+        <mat-form-field appearance="outline" class="full-width">
+          <textarea matInput [formControlName]="i"></textarea>
+        </mat-form-field>
+      </div>
+      <button mat-button class="add-btn skill" type="button" (click)="addResponsibility()">+ Add Responsibility</button>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Skills</mat-label>
+      <input
+        matInput
+        formControlName="skills"
+        placeholder="Comma separated skills (e.g., Angular, TypeScript)"
+      />
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button class="cancel-btn" (click)="close()">Cancel</button>
+  <button mat-raised-button class="save-button" (click)="save()" [disabled]="experienceForm.invalid">Save</button>
+</div>

@@ -1,4 +1,4 @@
-.container {
+.home-container {
   display: flex;
   height: 100vh;
 }
@@ -14,16 +14,17 @@
   width: 60%;
   margin-left: 40%;
   overflow-y: auto;
-  height: 100vh;
+  min-height: 100vh;
   scroll-behavior: smooth;
 }
+
 
 section {
   padding: 20px 50px;
 }
 
 @media (max-width: 1024px) {
-  .container {
+  .home-container {
     flex-direction: column;
     height: auto;
   }
