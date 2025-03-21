@@ -1,5 +1,6 @@
 export interface Project {
-  image: string;
+  id: number;
+  image?: string;
   title: string;
   description: string;
   skills: string[];

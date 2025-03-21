@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>{{data.id ? 'Edit Project' : 'Add Project'}}</h2>
+<div mat-dialog-content>
+  <form [formGroup]="projectForm">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title"/>
+    </mat-form-field>
+
+    <div class="full-width">
+      <label for="fileInput">Image</label>
+      <input
+        id="fileInput"
+        type="file"
+        (change)="onFileChange($event)"
+        accept="image/*"
+      />
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Skills</mat-label>
+      <input
+        matInput
+        formControlName="skills"
+        placeholder="Comma separated skills (e.g., Angular, TypeScript)"
+      />
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button class="cancel-btn" (click)="close()">Cancel</button>
+  <button mat-raised-button class="save-button" (click)="save()" [disabled]="projectForm.invalid">Save</button>
+</div>

@@ -33,11 +33,11 @@ export class ExperienceModalComponent {
   public data = inject<Experience>(MAT_DIALOG_DATA);
 
   experienceForm: FormGroup = this.fb.group({
-    title: [this.data?.title || ''],
-    startDate: [this.data?.startDate || null],
+    title: [this.data?.title || '', Validators.required],
+    startDate: [this.data?.startDate || null, Validators.required],
     endDate: [this.data?.endDate || null],
     responsibilities: this.fb.array(this.data?.responsibilities || []),
-    skills: [this.data?.skills?.join(', ') || '']
+    skills: [this.data?.skills?.join(', ') || '', Validators.required]
   });
 
   get responsibilities(): FormArray {

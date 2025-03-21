@@ -1,0 +1,22 @@
+.full-width {
+  width: 100%;
+}
+
+.add-btn {
+  border: 1px solid #00c4cc;
+  margin-top: 20px;
+}
+
+.cancel-btn {
+  background-color: #6c757d;
+}
+
+.save-button {
+  border: 1px solid #00c4cc;
+  box-shadow: 0 4px 6px var(--skills-shadow);
+}
+
+.save-button:disabled {
+  background-color: #6c757d;
+  border: none;
+}

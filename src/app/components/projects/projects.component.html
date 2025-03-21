@@ -1,15 +1,22 @@
 <div class="container">
-  <div class="d-flex justify-content-between" >
+  <div class="show-flex">
     <h2 class="section-header">Personal Projects</h2>
-    <button (click)="addProjects()">ADD</button>
+    <button class="btn add-btn" (click)="addProjects()">
+      <i class="fas fa-plus"></i>
+    </button>
   </div>
   <div class="card-body" *ngFor="let project of projects">
     <div class="card-left">
-      <p class="left-text">{{project.image}}
-      </p>
+      <img width="50px" [src]="project.image" alt="">
     </div>
     <div class="card-right">
-      <h3 class="title">{{ project.title }}</h3>
+      <div class="show-flex">
+        <h3 class="title">{{ project.title }}</h3>
+        <div style="display: flex">
+          <button class="btn edit-btn" (click)="editProject(project.id)"><i class="fas fa-edit"></i></button>
+          <button class="btn delete-btn" (click)="deleteProject(project.id)"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>
       <p>{{project.description}}</p>
       <ul>
         <li class="skill" *ngFor="let skill of project.skills">

@@ -54,6 +54,7 @@ export class ExperienceComponent implements OnInit {
       }
     });
   }
+
   editExperience(id: number) {
     const experienceToEdit = this.experiences.find(exp => exp.id === id);
     if (!experienceToEdit) return;
@@ -61,12 +62,11 @@ export class ExperienceComponent implements OnInit {
     const dialogRef = this.dialog.open(ExperienceModalComponent, {
       width: '500px',
       panelClass: 'no-scroll-modal',
-      data: experienceToEdit // Pass existing experience data
+      data: experienceToEdit
     });
 
     dialogRef.afterClosed().subscribe((updatedExperience: Experience) => {
       if (updatedExperience) {
-        // Replace the updated experience in the list
         this.experiences = this.experiences.map(exp =>
           exp.id === updatedExperience.id ? updatedExperience : exp
         );
