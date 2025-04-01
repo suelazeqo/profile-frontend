@@ -1,17 +1,30 @@
 <div class="container">
-  <h2 class="section-header">Skills</h2>
-  <div class="card-body" *ngFor="let skill of skills">
+  <div class="show-flex">
+    <h2 class="section-header">Skills</h2>
+    <button class="btn add-btn" (click)="openModal()">
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
+  <div class="card-body" *ngFor="let category of categories">
     <div class="card-left">
-      <p class="left-text">{{ skill.name }}</p>
+      <p class="left-text">{{ category.name }}</p>
     </div>
     <div class="card-right">
-      <div *ngFor="let subcategory of skill.subcategories">
+      <div *ngFor="let subcategory of category.subcategories">
         <h3 class="title">{{ subcategory.name }}:</h3>
         <ul>
-          <li class="skill" *ngFor="let tech of subcategory.skills">
-            {{ tech.name }}
+          <li class="skill" *ngFor="let skill of subcategory.skills">
+            {{ skill.name }}
           </li>
         </ul>
+      </div>
+      <div>
+        <button class="btn edit-btn" (click)="editCategory(category.id)">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button class="btn delete-btn" (click)="deleteCategory(category.id)">
+          <i class="fas fa-trash"></i>
+        </button>
       </div>
     </div>
   </div>

@@ -1,0 +1,115 @@
+<mat-horizontal-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="categoryForm">
+    <form [formGroup]="categoryForm">
+      <ng-template matStepLabel>Category</ng-template>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Select Category</mat-label>
+        <mat-select formControlName="category">
+          <mat-option *ngFor="let category of categories" [value]="category">
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button *ngIf="!isEditMode" mat-button color="primary" (click)="toggleNewCategory()">+ New Category</button>
+
+      <div *ngIf="!isEditMode && isNewCategory">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>New Category Name</mat-label>
+          <input matInput formControlName="newCategoryName"/>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="isEditMode">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Rename Category</mat-label>
+          <input matInput formControlName="renameCategory"/>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-button color="primary"
+                (click)="nextStep(stepper)"
+                [disabled]="categoryForm.invalid">
+          {{
+          isEditMode
+            ? (allowRename ? 'Rename and Continue' : 'Next')
+            : (isNewCategory ? 'Create and Continue' : 'Next')
+          }}
+        </button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="subcategoryForm">
+    <form [formGroup]="subcategoryForm">
+      <ng-template matStepLabel>Subcategory</ng-template>
+
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Select Subcategory</mat-label>
+        <mat-select formControlName="subcategory">
+          <mat-option *ngFor="let sub of subcategories" [value]="sub">
+            {{ sub.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-button color="primary" (click)="toggleNewSubcategory()">+ New Subcategory</button>
+
+      <div *ngIf="isNewSubcategory">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>New Subcategory Name</mat-label>
+          <input matInput formControlName="newSubcategoryName"/>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="isEditMode && allowRenameSubcategory">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Rename Selected Subcategory</mat-label>
+          <input matInput formControlName="renameSubcategory"/>
+        </mat-form-field>
+        <button class="btn delete-btn" style="margin-left: 20px" title="Delete the selected subcategory"
+                (click)="deleteSubcategory()"><i class="fas fa-trash"></i></button>
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button color="primary" (click)="nextStep2(stepper)" [disabled]="subcategoryForm.invalid">
+          {{ isNewSubcategory ? 'Create and Continue' : 'Next' }}
+        </button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="skillsForm">
+    <form [formGroup]="skillsForm">
+      <ng-template matStepLabel>Skills</ng-template>
+      <ul *ngIf="selectedSubcategorySkills.length > 0; else noSkills">
+        <li class="skill" *ngFor="let skill of selectedSubcategorySkills">
+          <div class="skill-content">
+            {{ skill.name }}
+            <button class="remove-skill-btn" (click)="removeSkill(skill)">−</button>
+          </div>
+        </li>
+      </ul>
+
+      <ng-template #noSkills>
+        <p>No skills found for this subcategory.</p>
+      </ng-template>
+
+
+      <mat-form-field class="w-100">
+        <mat-label>Add Skill</mat-label>
+        <input
+          matInput
+          [(ngModel)]="skillInput"
+          [ngModelOptions]="{ standalone: true }"
+          (keydown.enter)="addSkill(); $event.preventDefault()"
+        />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button color="primary" (click)="addSkill()">Save</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>

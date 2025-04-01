@@ -7,8 +7,9 @@
   </div>
   <div class="card-body" *ngFor="let project of projects">
     <div class="card-left">
-      <img width="50px" [src]="project.image" alt="">
+      <img *ngIf="project.image" [src]="project.image" alt="Project image">
     </div>
+
     <div class="card-right">
       <div class="show-flex">
         <h3 class="title">{{ project.title }}</h3>

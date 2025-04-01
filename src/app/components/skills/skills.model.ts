@@ -14,3 +14,9 @@ export interface Category {
   name: string;
   subcategories: Subcategory[];
 }
+export interface SkillsModalData {
+  mode: 'create' | 'edit';
+  selectedCategory?: Category;
+  selectedSubcategory?: Subcategory;
+  selectedSkills?: Skill[];
+}
