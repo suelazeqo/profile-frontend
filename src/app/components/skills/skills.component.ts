@@ -4,6 +4,7 @@ import {SkillsService} from '../../services/skills.service';
 import {Category, SkillsModalData} from './skills.model';
 import {MatDialog} from '@angular/material/dialog';
 import {SkillsModalComponent} from './skills-modal/skills-modal.component';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-skills',
@@ -15,6 +16,7 @@ import {SkillsModalComponent} from './skills-modal/skills-modal.component';
 export class SkillsComponent implements OnInit {
   categories: Category[] = [];
   private skillsService = inject(SkillsService);
+  public authService = inject(AuthService);
   private dialog = inject(MatDialog);
 
   ngOnInit() {
@@ -44,10 +46,8 @@ export class SkillsComponent implements OnInit {
       }
     })
 
-    dialogRef.afterClosed().subscribe((newCategory: Category) => {
-      if (newCategory) {
-        this.categories.push(newCategory);
-      }
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadingSkills()
     });
   }
 
@@ -65,11 +65,7 @@ export class SkillsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((updatedCategory: Category) => {
-      if (updatedCategory) {
-        this.categories = this.categories.map(exp =>
-          exp.id === updatedCategory.id ? updatedCategory : exp
-        );
-      }
+      this.loadingSkills()
     });
   }
 

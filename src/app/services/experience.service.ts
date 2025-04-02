@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Experience} from '../components/experience/experience.model';
 import {API_URL} from '../app.config';
+import {AuthService} from './auth.service';
 
 @Injectable({
   providedIn: 'root'

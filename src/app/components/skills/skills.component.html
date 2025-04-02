@@ -1,7 +1,7 @@
 <div class="container">
   <div class="show-flex">
     <h2 class="section-header">Skills</h2>
-    <button class="btn add-btn" (click)="openModal()">
+    <button *ngIf="authService.isLoggedIn()" class="btn add-btn" (click)="openModal()">
       <i class="fas fa-plus"></i>
     </button>
   </div>
@@ -18,7 +18,7 @@
           </li>
         </ul>
       </div>
-      <div>
+      <div *ngIf="authService.isLoggedIn()">
         <button class="btn edit-btn" (click)="editCategory(category.id)">
           <i class="fas fa-edit"></i>
         </button>

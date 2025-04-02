@@ -1,7 +1,7 @@
 <div class="container">
   <div class="show-flex" >
     <h2 class="section-header">Career History</h2>
-    <button class="btn add-btn" (click)="openModal()">
+    <button *ngIf="authService.isLoggedIn()" class="btn add-btn" (click)="openModal()">
       <i class="fas fa-plus"></i>
     </button>
   </div>
@@ -14,7 +14,7 @@
     <div class="card-right">
       <div class="show-flex">
         <h3 class="title">{{ exp.title }}</h3>
-        <div style="display: flex">
+        <div *ngIf="authService.isLoggedIn()" style="display: flex">
           <button class="btn edit-btn" (click)="editExperience(exp.id)"><i class="fas fa-edit"></i></button>
           <button class="btn delete-btn" (click)="deleteExperience(exp.id)"><i class="fas fa-trash"></i></button>
         </div>

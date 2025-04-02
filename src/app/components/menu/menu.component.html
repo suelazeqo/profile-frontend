@@ -28,6 +28,20 @@
           <i class="fab fa-linkedin"></i>
         </a>
       </li>
+      <li *ngIf="authService.isLoggedIn(); else loginTemplate">
+        <a (click)="logout()" class="login-link">
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
+      </li>
+
+      <ng-template #loginTemplate>
+        <li>
+          <a (click)="openLoginModal()" class="login-link">
+            <i class="fas fa-sign-in-alt"></i>
+          </a>
+        </li>
+      </ng-template>
+
     </ul>
 
   </div>

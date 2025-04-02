@@ -4,6 +4,7 @@ import {ProjectsService} from '../../services/projects.service';
 import {CommonModule, NgForOf} from '@angular/common';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {ProjectModalComponent} from './project-modal/project-modal.component';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-projects',
@@ -21,6 +22,8 @@ export class ProjectsComponent implements OnInit {
 
   private projectsService = inject(ProjectsService);
   private dialog = inject(MatDialog);
+  public authService = inject(AuthService);
+
 
   ngOnInit(): void {
     this.loadProjects()

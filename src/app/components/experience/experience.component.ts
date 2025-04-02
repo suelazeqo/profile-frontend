@@ -5,6 +5,7 @@ import {Experience} from './experience.model';
 import {ExperienceModalComponent} from './experience-modal/experience-modal.component';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {provideNativeDateAdapter} from '@angular/material/core';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-experience',
@@ -19,6 +20,7 @@ export class ExperienceComponent implements OnInit {
 
   private experienceService = inject(ExperienceService);
   private dialog = inject(MatDialog);
+  public authService = inject(AuthService);
 
   ngOnInit() {
     this.loadExperiences()
@@ -73,6 +75,4 @@ export class ExperienceComponent implements OnInit {
       }
     });
   }
-
-
 }
