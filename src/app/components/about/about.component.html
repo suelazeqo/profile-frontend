@@ -1,2 +1,14 @@
-<p>With 7 years of experience in development, I began my career as a WordPress developer before transitioning into full-stack developer. My expertise lies in Angular and React, and I have expanded my skills to include game development and backend frameworks. I have contributed to a variety of projects, collaborating with teams to build innovative and high-performance solutions. Passionate about both gaming and software development, I am eager to continue growing, tackling new challenges, and making a meaningful impact through my work
-</p>
+<div style="display: flex; justify-content: space-between">
+  <p *ngIf="!isEdit">{{ description }}</p>
+  <button style="max-height: 30px" *ngIf="authService.isLoggedIn() && !isEdit" class="btn edit-btn"
+          (click)="editDescription()">
+    <i class="fas fa-edit"></i>
+  </button>
+</div>
+
+<div *ngIf="isEdit">
+  <textarea rows="10" [(ngModel)]="editedDescription"></textarea>
+  <div style="display: flex; justify-content: flex-end">
+    <button class=" skill" (click)="saveDescription()">Submit</button>
+  </div>
+</div>
