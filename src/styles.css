@@ -181,3 +181,6 @@ mat-form-field {
 .no-scroll-modal .mat-mdc-dialog-content::-webkit-scrollbar {
   display: none;
 }
+.mat-mdc-dialog-surface::before {
+  background-color: var(--background-color);
+}

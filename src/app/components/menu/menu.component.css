@@ -111,6 +111,7 @@
 
   .menu-content.show {
     transform: translateX(0);
+    background-color: #14202e;
   }
 
   .menu-content nav ul {
