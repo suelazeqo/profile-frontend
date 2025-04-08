@@ -8,4 +8,7 @@ img {
   .card-body{
     flex-direction: column;
   }
+  .card-right{
+    width: 100%;
+  }
 }

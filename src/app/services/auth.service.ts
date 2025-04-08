@@ -13,8 +13,11 @@ export class AuthService {
   }
 
   login(credentials: { username: string; password: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/auth/login`, credentials);
+    return this.http.post(`${this.apiUrl}/auth/login`, credentials, {
+      withCredentials: true,
+    });
   }
+
 
   isLoggedIn(): boolean {
     if (typeof window !== 'undefined' && window.localStorage) {

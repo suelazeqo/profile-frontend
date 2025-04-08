@@ -36,6 +36,7 @@
             : (isNewCategory ? 'Create and Continue' : 'Next')
           }}
         </button>
+        <button mat-button (click)="dialogRef.close()">Close</button>
       </div>
     </form>
   </mat-step>
@@ -76,6 +77,7 @@
         <button mat-button color="primary" (click)="nextStep2(stepper)" [disabled]="subcategoryForm.invalid">
           {{ isNewSubcategory ? 'Create and Continue' : 'Next' }}
         </button>
+        <button mat-button (click)="dialogRef.close()">Close</button>
       </div>
     </form>
   </mat-step>
@@ -109,6 +111,7 @@
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button color="primary" (click)="addSkill()">Save</button>
+        <button mat-button (click)="dialogRef.close()">Close</button>
       </div>
     </form>
   </mat-step>
