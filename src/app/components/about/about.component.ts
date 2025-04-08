@@ -25,12 +25,14 @@ export class AboutComponent implements OnInit, OnDestroy {
   public authService = inject(AuthService);
 
   ngOnInit() {
+  this.fetchDescription()
+  }
+  fetchDescription(){
     this.aboutSubscription = this.aboutService.getAboutDescription().subscribe(response => {
       this.description = response.description;
       this.editedDescription = response.description;
     });
   }
-
   editDescription() {
     this.isEdit = true;
   }
@@ -45,6 +47,7 @@ export class AboutComponent implements OnInit, OnDestroy {
     this.description = this.editedDescription;
     this.isEdit = false;
     this.aboutService.editDescription(this.editedDescription).subscribe();
+    this.fetchDescription();
   }
 
 
