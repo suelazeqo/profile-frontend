@@ -15,12 +15,16 @@ import {AuthService} from '../../services/auth.service';
 })
 export class SkillsComponent implements OnInit {
   categories: Category[] = [];
+  openCategory: number | null = null;
   private skillsService = inject(SkillsService);
   public authService = inject(AuthService);
   private dialog = inject(MatDialog);
 
   ngOnInit() {
     this.loadingSkills()
+  }
+  toggleCategory(index: number) {
+    this.openCategory = this.openCategory === index ? null : index;
   }
 
   loadingSkills() {

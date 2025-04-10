@@ -5,11 +5,22 @@
       <i class="fas fa-plus"></i>
     </button>
   </div>
-  <div class="card-body" *ngFor="let category of categories">
-    <div class="card-left">
+  <div class="card-body" *ngFor="let category of categories; let i = index">
+
+    <div *ngIf="openCategory !== i" style="display: flex; justify-content: space-between; width: 100%; padding-left: 20px">
+      <p>
+        {{ category.name }}
+      </p>
+      <button class="btn add-btn" (click)="toggleCategory(i)"><i class="fas fa-plus"></i></button>
+    </div>
+
+
+    <div *ngIf="openCategory === i" class="card-left">
+      <button class="btn add-btn" (click)="toggleCategory(i)"><i class="fas fa-minus"></i></button>
+
       <p class="left-text">{{ category.name }}</p>
     </div>
-    <div class="card-right">
+    <div *ngIf="openCategory === i" class="card-right">
       <div *ngFor="let subcategory of category.subcategories">
         <h3 class="title">{{ subcategory.name }}:</h3>
         <ul>

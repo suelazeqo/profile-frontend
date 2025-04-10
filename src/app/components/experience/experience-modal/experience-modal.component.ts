@@ -37,7 +37,8 @@ export class ExperienceModalComponent {
     startDate: [this.data?.startDate || null, Validators.required],
     endDate: [this.data?.endDate || null],
     responsibilities: this.fb.array(this.data?.responsibilities || []),
-    skills: [this.data?.skills?.join(', ') || '', Validators.required]
+    skills: [this.data?.skills?.join(', ') || '', Validators.required],
+    company:[this.data?.company || null]
   });
 
   get responsibilities(): FormArray {

@@ -3,6 +3,7 @@ export interface Experience {
   startDate: string;
   endDate?: string;
   title: string;
+  company:string;
   responsibilities: string[];
   skills: string[];
 }

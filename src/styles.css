@@ -63,6 +63,7 @@ nav ul li a:hover {
   cursor: pointer;
   border: none;
   box-shadow: 0 4px 6px var(--shadow);
+  max-height: 30px;
 }
 
 .add-btn {

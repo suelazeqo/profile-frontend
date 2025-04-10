@@ -36,7 +36,7 @@ export class ExperienceComponent implements OnInit {
     const dialogRef = this.dialog.open(ExperienceModalComponent, {
       width: '500px',
       panelClass: 'no-scroll-modal',
-      data: {title: '', startDate: null, endDate: null, responsibilities: [], skills: []}
+      data: {title: '', company: '', startDate: null, endDate: null, responsibilities: [], skills: []}
     });
 
     dialogRef.afterClosed().subscribe((newExperience: Experience) => {
