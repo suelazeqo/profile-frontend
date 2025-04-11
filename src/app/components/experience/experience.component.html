@@ -5,7 +5,7 @@
       <i class="fas fa-plus"></i>
     </button>
   </div>
-  <div class="card-body" *ngFor="let exp of experiences">
+  <div class="card-body"  *ngFor="let exp of visibleExperiences; let i = index">
     <div class="card-left">
       <p class="left-text">{{ exp.startDate | date:'MMM yyyy' }} -
         {{ exp.endDate ? (exp.endDate | date:'MMM yyyy') : 'Present' }}
@@ -31,5 +31,10 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div class="show-experience" >
+    <button class="btn add-btn" *ngIf="experiences.length > 2" (click)="toggleShowAll()">
+      {{ showAll ? 'Show Less' : 'Show More' }}
+    </button>
   </div>
 </div>

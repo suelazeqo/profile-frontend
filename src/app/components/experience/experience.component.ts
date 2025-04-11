@@ -17,6 +17,7 @@ import {AuthService} from '../../services/auth.service';
 })
 export class ExperienceComponent implements OnInit {
   experiences: Experience[] = [];
+  showAll = false;
 
   private experienceService = inject(ExperienceService);
   private dialog = inject(MatDialog);
@@ -74,5 +75,12 @@ export class ExperienceComponent implements OnInit {
         );
       }
     });
+  }
+  get visibleExperiences() {
+    return this.showAll ? this.experiences : this.experiences.slice(0, 2);
+  }
+
+  toggleShowAll() {
+    this.showAll = !this.showAll;
   }
 }

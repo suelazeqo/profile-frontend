@@ -20,3 +20,8 @@
   background-color: #6c757d;
   border: none;
 }
+
+.select-image {
+  display: flex;
+  flex-direction: column;
+}
