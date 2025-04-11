@@ -1,6 +1,6 @@
-<div style="display: flex; justify-content: space-between">
-  <p *ngIf="!isEdit">{{ description }}</p>
-  <button style="max-height: 30px" *ngIf="authService.isLoggedIn() && !isEdit" class="btn edit-btn"
+<div class="about">
+  <p style="margin: 0" *ngIf="!isEdit">{{ description }}</p>
+  <button *ngIf="authService.isLoggedIn() && !isEdit" class="btn edit-btn"
           (click)="editDescription()">
     <i class="fas fa-edit"></i>
   </button>

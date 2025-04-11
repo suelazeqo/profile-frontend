@@ -26,6 +26,7 @@ section {
 @media (max-width: 1024px) {
   .home-container {
     flex-direction: column;
+    align-items: center;
     height: auto;
   }
 
@@ -35,6 +36,7 @@ section {
     height: auto;
     text-align: center;
     padding: 20px;
+    margin-left: 20px;
   }
 
   .content {

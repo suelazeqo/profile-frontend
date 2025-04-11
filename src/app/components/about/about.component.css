@@ -1,4 +1,10 @@
-textarea{
+textarea {
   width: 90%;
   color: #1f2432;
+}
+
+.about {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px
 }

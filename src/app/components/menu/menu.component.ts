@@ -20,14 +20,17 @@ export class MenuComponent {
 
 
   openLoginModal() {
-    this.dialog.open(LoginModalComponent, {
+    const modalRef = this.dialog.open(LoginModalComponent, {
       width: '350px'
     });
-
+    modalRef.afterClosed().subscribe(() => {
+      this.isMenuOpen = false
+    })
   }
 
   logout() {
     this.authService.logout();
+    this.isMenuOpen = false
   }
 
   toggleMenu() {
