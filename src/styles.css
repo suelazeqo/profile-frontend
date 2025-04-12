@@ -182,6 +182,15 @@ mat-form-field {
 .no-scroll-modal .mat-mdc-dialog-content::-webkit-scrollbar {
   display: none;
 }
+
 .mat-mdc-dialog-surface, .mat-horizontal-stepper-wrapper {
   background-color: var(--background-color) !important;
+}
+
+@media (max-width: 768px) {
+
+  .card-body:hover {
+    box-shadow: none;
+    transform: none;
+  }
 }
