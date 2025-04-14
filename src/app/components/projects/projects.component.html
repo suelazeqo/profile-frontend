@@ -12,7 +12,13 @@
 
     <div class="card-right">
       <div class="show-flex">
-        <h3 class="title">{{ project.title }}</h3>
+        <h3 class="title">
+          <ng-container *ngIf="project.link; else plainTitle">
+            <a [href]="project.link">{{ project.title }}</a>
+          </ng-container>
+          <ng-template #plainTitle>{{ project.title }}</ng-template>
+        </h3>
+
         <div *ngIf="authService.isLoggedIn()" style="display: flex">
           <button class="btn edit-btn" (click)="editProject(project.id)"><i class="fas fa-edit"></i></button>
           <button class="btn delete-btn" (click)="deleteProject(project.id)"><i class="fas fa-trash"></i></button>

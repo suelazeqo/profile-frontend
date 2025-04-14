@@ -44,7 +44,8 @@ export class ProjectModalComponent {
     image: [this.data?.image || ''],
     title: [this.data?.title || '', Validators.required],
     description: [this.data?.description || '', Validators.required],
-    skills: [this.data?.skills.join(', ') || '', Validators.required]
+    skills: [this.data?.skills.join(', ') || '', Validators.required],
+    link: [this.data?.link || '']
   });
   private selectedFile: any;
 
@@ -73,6 +74,7 @@ export class ProjectModalComponent {
         title: formValues.title,
         description: formValues.description,
         skills: skillsArray,
+        link: formValues.link
       };
 
       if (this.imageFile) {
