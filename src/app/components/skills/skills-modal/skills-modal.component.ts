@@ -4,11 +4,10 @@ import {Category, Skill, SkillsModalData, Subcategory} from '../skills.model';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatOption, MatSelect} from '@angular/material/select';
-import {MatStep, MatStepLabel, MatStepper, MatStepperNext, MatStepperPrevious} from '@angular/material/stepper';
+import {MatStep, MatStepLabel, MatStepper, MatStepperPrevious} from '@angular/material/stepper';
 import {MatButton} from '@angular/material/button';
 import {MatInput} from '@angular/material/input';
-import {MatChip, MatChipsModule} from '@angular/material/chips';
-import {MatIcon} from '@angular/material/icon';
+import {MatChipsModule} from '@angular/material/chips';
 import {CommonModule} from '@angular/common';
 import {SkillsService} from '../../../services/skills.service';
 
@@ -26,12 +25,9 @@ import {SkillsService} from '../../../services/skills.service';
     MatStepLabel,
     MatButton,
     MatInput,
-    MatChip,
-    MatIcon,
     ReactiveFormsModule,
     FormsModule,
     MatStepperPrevious,
-    MatStepperNext,
     MatChipsModule
   ],
   templateUrl: './skills-modal.component.html',
